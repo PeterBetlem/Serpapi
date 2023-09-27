@@ -6,7 +6,7 @@ from pathlib import Path
 
 def search_scholar():
     params = {
-    "api_key": os.environ.get("serpapi-token"),
+    "api_key": os.environ.get("serpapi_token"),
     "engine": "google_scholar_author",
     "hl": "en",
     "author_id": "vdV4YxIAAAAJ"
