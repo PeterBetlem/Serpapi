@@ -14,6 +14,7 @@ def search_scholar():
   
     search = GoogleSearch(params)
     results = search.get_dict()
+    print(results)
     table = dict((key,d[key]) for d in results["cited_by"]["table"] for key in d)
     graph = dict((year,d['citations']) for d in results["cited_by"]["graph"] for key,year in d.items() if not key == "citations")
 
