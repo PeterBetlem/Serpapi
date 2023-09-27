@@ -20,9 +20,9 @@ def search_scholar():
 
     Path("output").mkdir()
     with open('output/GScholartable.json', 'w') as f:
-    json.dump(table, f, indent=2)
+        json.dump(table, f, indent=2)
     with open('output/GScholargraph.json', 'w') as f:
-    json.dump(results["cited_by"]["graph"], f, indent=2)
+        json.dump(graph, f, indent=2)
 
 
 if __name__ == "__main__":
