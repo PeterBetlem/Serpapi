@@ -1,0 +1,50 @@
+name: Search
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.9]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+
+      - name: Setup Python
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          activate-environment: test
+          #environment-file: geomod.yaml
+          python-version: ${{ matrix.python-version }}
+          mamba-version: "*"
+          channels: conda-forge,defaults
+          channel-priority: true
+          auto-activate-base: false
+
+      - name: install python packages
+        shell: bash -l {0}
+        run: |
+          pip install google-search-results
+          
+      - name: execute py script
+        env:
+          serpapi_token: ${{secrets.SERPAPI_TOKEN}}
+        run: python run_scholar_search.py
+          
+      - name: commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git diff-index --quiet HEAD || (git commit -a -m "updated scholar search" --allow-empty)
+
+      - name: push changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main 
