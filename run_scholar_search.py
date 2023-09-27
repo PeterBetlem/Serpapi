@@ -19,10 +19,10 @@ def search_scholar():
     graph = dict((year,d['citations']) for d in results["cited_by"]["graph"] for key,year in d.items() if not key == "citations")
 
 
-    Path("output").mkdir()
-    with open('output/GScholartable.json', 'w') as f:
+    #Path("output").mkdir()
+    with open('GScholartable.json', 'w') as f:
         json.dump(table, f, indent=2)
-    with open('output/GScholargraph.json', 'w') as f:
+    with open('GScholargraph.json', 'w') as f:
         json.dump(graph, f, indent=2)
 
 
