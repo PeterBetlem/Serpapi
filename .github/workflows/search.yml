@@ -28,13 +28,11 @@ jobs:
 
       - name: install python packages
         shell: bash -l {0}
-        run: |
-          pip install google-search-results
-          
-      - name: execute py script
         env:
           serpapi_token: ${{secrets.SERPAPI_TOKEN}}
-        run: python run_scholar_search.py
+        run: |
+          pip install google-search-results
+          python run_scholar_search.py
           
       - name: commit files
         run: |
