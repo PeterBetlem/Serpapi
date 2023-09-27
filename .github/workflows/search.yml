@@ -1,6 +1,8 @@
-name: Search
+name: Update Scholar Stats
 
-on: [push]
+on:
+  schedule:
+    - cron: "0 6 * * *"
 
 jobs:
   build:
