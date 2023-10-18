@@ -19,7 +19,6 @@ jobs:
 
     steps:
       - name: install and run python
-        uses: actions/checkout@v3
         uses: actions/setup-python@v4
         shell: bash -l {0}
         with:
