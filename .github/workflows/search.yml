@@ -23,7 +23,6 @@ jobs:
           activate-environment: test
           #environment-file: geomod.yaml
           python-version: ${{ matrix.python-version }}
-          mamba-version: "*"
           channels: conda-forge,defaults
           channel-priority: true
           auto-activate-base: false
