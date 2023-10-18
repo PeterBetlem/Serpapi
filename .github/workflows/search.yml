@@ -17,7 +17,6 @@ jobs:
         with:
           persist-credentials: false
 
-    steps:
       - name: install and run python
         uses: actions/setup-python@v4
         shell: bash -l {0}
